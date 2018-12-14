@@ -1,15 +1,29 @@
 a {
     color: white;
 }
-body {
-    background-image: url(../images/background-board-brown-326311.jpg);
-    background-size: 100%;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.textarea {
     color: white;
 }
-textarea{
-    color: white;
+.note-list { 
+    margin-top: 75px;
+    height: 50rem;
+    width: 100%;
+}
+.note-item {
+
+}
+.note-icon {
+    font-size: 50px; 
+    margin-left: 75px !important;
+}
+.nav {
+    height: 100px;
+}
+body {
+    position: relative;
+}
+.plus {
+    position: absolute;
+    bottom: 0px;
+    right: 100px;
 }
