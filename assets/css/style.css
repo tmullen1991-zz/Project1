@@ -1,0 +1,40 @@
+
+a {
+    color: white;
+}
+.textarea {
+    color: white;
+}
+.note-list { 
+    margin-top: 75px;
+    height: 50rem;
+    width: 100%;
+}
+.note-item {
+    margin-left: 75px !important;
+    margin-right: 75px !important;
+    margin-bottom: 0px !important;
+    border-left: 1px solid #eeeeee;
+    border-top: 1px solid #eeeeee;
+    border-right: 1px solid #eeeeee;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.note-last-item {
+    border-bottom: 1px solid #eeeeee;
+}
+.note-icon {
+    font-size: 50px; 
+    color: #ff5252;
+}
+.nav {
+    height: 100px;
+}
+body {
+    position: relative;
+}
+.plus {
+    position: absolute;
+    bottom: 0px;
+    right: 100px;
+}
