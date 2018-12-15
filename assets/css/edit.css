@@ -1,15 +1,16 @@
 .back-arrow{
-    margin-left: 20px !important;
+    margin-left: 25px !important;
 }
 .note-name{
     margin-right: 20px !important;
 }
 .save-button{
-    margin-right: 75px !important;
+    margin-right: 0px !important;
+    margin-top: 25px!important;
 }
 .note-content{
-    margin-left: 75px !important;
-    margin-right: 75px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
     margin-bottom: 0px !important;
-    width: 85% !important;
+    width: 80% !important;
 }
