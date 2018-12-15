@@ -8,7 +8,7 @@
     <!--<meta name="viewport" content="width=device-width, initial-scale=1.0"> for some reason this messes with mobile view-->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/edit.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -18,26 +18,22 @@
 <body>
     <nav>
         <div id="note-name" class="nav-wrapper blue">
-            
-            <a href="../index.html"><i class="large material-icons ml-2">arrow_back</i></a>
-            <ul id="nav-mobile" class="left hide-on-med-and-down">
-                <li><a href="../index.html">Home</a></li>
-            </ul>
+            <a href="../index.html"><i class="back-arrow large material-icons ml-2">arrow_back</i></a>
         </div>
     </nav>
     <div class="row">
         <form class="col s12">
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea id="note-content" class="materialize-textarea"></textarea>
-                    <label for="textarea1">Add Stuff to Remeber Here </label>
+                    <textarea class="note-content materialize-textarea"></textarea>
+                    <label class="note-content" for="textarea1">Add Stuff to Remeber Here </label>
                 </div>
             </div>
         </form>
     </div>
-
-    <a id="save" class="waves-effect waves-light blue right btn"><i class="material-icons right">save</i>save</a>
-
+    <div class="row">
+        <a id="save" class="save-button waves-effect waves-light blue right btn"><i class="material-icons right">save</i>save</a>
+    </div>
     <script src="../assets/javascript/app.js"></script>
 </body>
 
