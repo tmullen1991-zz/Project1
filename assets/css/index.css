@@ -30,11 +30,9 @@ a {
     height: 100px;
 }
 body {
-    position: relative;
     height: 100vh;
 }
 .plus {
-    position: absolute;
-    bottom: 50px;
-    right: 100px;
+    margin-right: 75px;
+    margin-top: 50px;
 }
