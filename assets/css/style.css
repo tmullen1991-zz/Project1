@@ -10,11 +10,21 @@ a {
     width: 100%;
 }
 .note-item {
-
+    margin-left: 75px !important;
+    margin-right: 75px !important;
+    margin-bottom: 0px !important;
+    border-left: 1px solid #eeeeee;
+    border-top: 1px solid #eeeeee;
+    border-right: 1px solid #eeeeee;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.note-last-item {
+    border-bottom: 1px solid #eeeeee;
 }
 .note-icon {
     font-size: 50px; 
-    margin-left: 75px !important;
+    color: #ff5252;
 }
 .nav {
     height: 100px;
