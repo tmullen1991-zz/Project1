@@ -26,6 +26,15 @@ a {
     font-size: 50px; 
     color: #ff5252;
 }
+.note-hashtag {
+    padding-top: 11px;
+    padding-bottom: 11px;
+    text-align: right;
+    font-size: 20px;
+}
+.file-name {
+    font-size: 35px;
+}
 .nav {
     height: 100px;
 }
@@ -35,4 +44,27 @@ body {
 .plus {
     margin-right: 75px;
     margin-top: 50px;
+}
+
+@media only screen and (max-width: 875px) {
+    .note-item {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+        width: 100%;
+        border-right: none;
+        border-left: none;
+    }
+    .plus {
+        margin-right: 25px;
+        margin-top: 50px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .file-name {
+        margin-top: 7.5px;
+        margin-bottom: 7.5px;
+        font-size: 25px;
+        margin-left: 20px;
+    }
 }
