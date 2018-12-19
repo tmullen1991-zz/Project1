@@ -19,13 +19,11 @@ $(document).ready(function () {
     $(document).on("click", "#save", function () {
         // push data to firebase
       
-        console.log("add save stuff someone :)")
+        noteContent = $(".note-content").val().trim();
     });
     
     $('.modal').modal();
-        noteContent = $(".note-content").val().trim()
         
-    })
     // appends the notes name to the header, change 'name goes here' to name variable from database 
     $("#note-name").prepend("<a href='#' class='brand-logo ml-5 center nav nav-text'>" + 'name goes here' + "</a>")
 })
