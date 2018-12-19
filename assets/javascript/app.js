@@ -9,19 +9,29 @@ $(document).ready(function () {
         messagingSenderId: "385049691199"
     };
     firebase.initializeApp(config);
-
+    var dataRef = firebase.database();
     // needed to allow for materialize input for mobile(see materialize/text-inputs on website)
-    // add the scond line everytime after jQuery change the textarea's val()
-    $('#textarea1').val();
+    // add this line everytime after jQuery change the textarea's $('#textarea1').val()
     M.textareaAutoResize($('#textarea1'));
 
     var noteContent
     $(document).on("click", "#save", function () {
         // push data to firebase
         noteContent = $(".note-content").val().trim()
-        
+        dataRef.ref().push({
+            noteContent: noteContent,
+        });
+
     })
+    
     // appends the notes name to the header, change 'name goes here' to name variable from database 
     $("#note-name").prepend("<a href='#' class='brand-logo ml-5 center nav nav-text'>" + 'name goes here' + "</a>")
 
+    dataRef.ref().on("child_added", function (childSnapshot) {
+        // Log everything that's coming out of snapshot
+        console.log(childSnapshot.val());
+
+    }, function (errorObject) {
+        console.log("Errors handled: " + errorObject.code);
+    });
 })
