@@ -52,6 +52,20 @@ body {
     margin-top: 50px;
 }
 
+/* edit.html styling*/
+.save-button{
+    margin-top: 15px!important;
+}
+.note{
+    /* match .note-item with no border*/
+    margin-left: 75px !important;
+    margin-right: 75px !important;
+    margin-bottom: 0px !important;
+}
+.back-arrow{
+    margin-left: 20px;
+    padding-top: 7px;
+}
 @media only screen and (max-width: 875px) {
     .note-item {
         margin-right: 0 !important;
@@ -63,6 +77,12 @@ body {
     .plus {
         margin-right: 25px;
         margin-top: 50px;
+        width: 100%;
+    }
+    .note{
+        /* match note item with no border*/
+        margin-left: 0px !important;
+        margin-right: 0px !important;
     }
 }
 
