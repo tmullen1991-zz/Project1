@@ -35,8 +35,11 @@ a {
 .file-name {
     font-size: 35px;
 }
-.nav {
-    height: 100px;
+.menu {
+    height: 73px !important;
+}
+.nav-text {
+    margin-top: 4.5px !important;
 }
 body {
     height: 100vh;
