@@ -48,6 +48,9 @@ body {
     margin-right: 75px;
     margin-top: 50px;
 }
+.file-name-input {
+    margin-top: 50px;
+}
 
 @media only screen and (max-width: 875px) {
     .note-item {

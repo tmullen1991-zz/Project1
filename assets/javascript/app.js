@@ -3,5 +3,7 @@ $(document).ready(function () {
     $(document).on("click", "#save", function(){
         // push data to firebase
         console.log("add save stuff someone :)")
-    })
+    });
+    
+    $('.modal').modal();
 })
