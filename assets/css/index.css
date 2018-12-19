@@ -48,6 +48,10 @@ body {
     margin-right: 75px;
     margin-top: 50px;
 }
+.file-name-input {
+    margin-top: 50px;
+}
+
 /* edit.html styling*/
 .save-button{
     margin-top: 15px!important;
