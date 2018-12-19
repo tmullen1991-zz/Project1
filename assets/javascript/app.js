@@ -13,7 +13,9 @@ $(document).ready(function () {
     // needed to allow for materialize input for mobile(see materialize/text-inputs on website)
     // add this line everytime after jQuery change the textarea's $('#textarea1').val()
     M.textareaAutoResize($('#textarea1'));
-
+  
+    $('.modal').modal();
+  
     var noteContent
     $(document).on("click", "#save", function () {
         // push data to firebase
