@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>edit</title>
+    <title>login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
@@ -17,21 +17,29 @@
 
 <body>
     <nav>
-        <div id="note-name" class="nav-wrapper menu blue">
-            <a href="../index.html"><i class="back-arrow large material-icons ml-5">arrow_back</i></a>
+        <div class="nav-wrapper red accent-2 menu blue">
+            <a href="#" class="brand-logo ml-5 center nav nav-text">Fruition</a>
         </div>
     </nav>
     <div class="row note">
         <form class="col s12 plus">
-            <div class="input-field col s12">
-                <textarea id="textarea1" class="materialize-textarea note-content"></textarea>
-                <label for="textarea1">Add Stuff to Remeber Here</label>
-                <a id="save" class="save-button waves-effect waves-light blue right btn"><i class="material-icons right">save</i>save</a>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="email" type="text" class="validate">
+                    <label for="email">Email</label>
+                </div>
             </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="password" type="password" class="validate">
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <a class="waves-effect waves-light btn blue" id="login">Login</a>
+            <a class="waves-effect waves-light btn blue" id="create">Create</a>
         </form>
-        <a class="btn blue right" id="logout">logout</a>
     </div>
-    <script src="../assets/javascript/edit.js"></script>
+    <script src="../assets/javascript/login.js"></script>
 </body>
 
 </html>
