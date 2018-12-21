@@ -28,5 +28,4 @@ $(document).ready(function () {
     $(document).on("click", "#logout", function () {
         firebase.auth().signOut()
     })
-    
-})
+    $('.modal').modal();
