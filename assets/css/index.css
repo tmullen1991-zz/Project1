@@ -43,6 +43,7 @@ a {
 }
 body {
     height: 100vh;
+    overflow: auto;
 }
 .plus {
     margin-right: 75px;
