@@ -19,10 +19,10 @@ $(document).ready(function () {
             loadFile.once('value', function (snapshot) {
                 var currentFile = snapshot.val();
                 $("#note-name").prepend("<a href='#' class='brand-logo ml-5 center nav nav-text'>" + currentFile + "</a>")
+
                 database.ref('users/' + User.uid + "/" + currentFile).on("child_added", function (childSnapshot) {
-                    if(childSnapshot.val() !== ""){
-                    $(".note-content").append(childSnapshot.val());
-                    
+                    if (childSnapshot.val() !== "") {
+                        $(".note-content").append(childSnapshot.val());
                     } else {
                         $("#text-label").append("Add Stuff to Remember Here :)")
                     }
@@ -45,7 +45,7 @@ $(document).ready(function () {
                 var currentFile = childSnapshot.val().currentFile;
                 if (currentFile !== undefined) {
                     // store the text into an object under the currentFile name in firebase
-                    database.ref('users/' + User.uid).child(currentFile).set({
+                    database.ref('users/' + User.uid +"/noteList").child(currentFile).set({
                         noteContent: noteContent
                     });
                 };
@@ -55,8 +55,6 @@ $(document).ready(function () {
         });
     });
 
-    // needed to allow for materialize input for mobile(see materialize/text-inputs on website)
-    // add this line everytime after jQuery change the textarea's $('#textarea1').val()
     M.textareaAutoResize($('#textarea1'));
     $(".dropdown-trigger").dropdown();
     $('.modal').modal();

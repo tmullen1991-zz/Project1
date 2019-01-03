@@ -43,6 +43,5 @@ $(document).ready(function () {
         });
         location.href = "pages/edit.html"
     });
-  
     $('.modal').modal();
 });
