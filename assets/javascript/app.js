@@ -32,6 +32,18 @@ $(document).ready(function () {
                 noteContent: ""
             });
         });
+
+        var listItem = $('<div class="row note-item">' + 
+            '<div class="col s2 l1 material-icons note-icon">insert_drive_file</div>' +
+            '<div class="col s7 m7 l7 file-name">' + fileName + '</div>' +
+        '</div>');
+
+        if( $("#noteList").text() === "") {
+            $(listItem).addClass('note-last-item');
+        }
+
+        $('#noteList').prepend(listItem);
+
     });
     // store the file clicked on into a reference object in firebase, this allows the edit.html page to know what file data to load
     $(document).on("click", ".file-name", function () {
