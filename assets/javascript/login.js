@@ -16,30 +16,25 @@ $(document).ready(function () {
         const email = $("#email").val().trim();
         const password = $("#password").val().trim();
         const promise = auth.signInWithEmailAndPassword(email, password).catch(function (error) {
-            console.log("error with sign in:" + error)
+            console.log("error with sign in:" + error);
+            alert(error);
         });
-        promise.catch(e => console.log(e.message))
-    })
+        promise.catch(e => console.log(e.message));
+    });
     $(document).on("click", "#create", function () {
         const email = $("#email").val().trim();
         const password = $("#password").val().trim();
         const promise = auth.createUserWithEmailAndPassword(email, password).catch(function (error) {
-            console.log("error with creation:" + error)
+            console.log("error with creation:" + error);
+            alert(error);
         });
-        promise.catch(e => console.log(e.message))
+        promise.catch(e => console.log(e.message));
     });
-    
     auth.onAuthStateChanged(User => {
         if (User) {
-            var userEmail = User.email
-            var uid = User.uid
-            database.ref('users/' + uid).set({
-                userEmail: userEmail,
-                uid: uid
-            })
             location.href = "../index.html";
         } else {
-            console.log("not logged in")
-        }
-    })
-})
+            console.log("not logged in");
+        };
+    });
+});

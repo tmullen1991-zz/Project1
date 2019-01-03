@@ -14,21 +14,35 @@ $(document).ready(function () {
     const auth = firebase.auth();
     auth.onAuthStateChanged(User => {
         if (User) {
-            var userEmail = User.email
-            var uid = User.uid
-            database.ref('users/' + uid).set({
-                userEmail: userEmail,
-                uid: uid
-            })
         } else {
-            location.href ="pages/login.html"
-        }
-    })
+            location.href = "pages/login.html"
+        };
+    });
     // sign out if logged in, auth.onAuthStateChanged above will automatically redirect to login
     $(document).on("click", "#logout", function () {
-        firebase.auth().signOut()
-    })
-    
+        firebase.auth().signOut();
+    });
     $('.modal').modal();
-    
-})
+    // add note name to database from modal
+    $(document).on("click", "#add", function () {
+        var fileName = $("input").val().trim()
+        auth.onAuthStateChanged(User => {
+            database.ref('users/' + User.uid).child(fileName).set({
+                // set initial note content to a blank string in firebase
+                noteContent: ""
+            });
+        });
+    });
+    // store the file clicked on into a reference object in firebase, this allows the edit.html page to know what file data to load
+    $(document).on("click", ".file-name", function () {
+        var currentFile = $(this).text();
+        auth.onAuthStateChanged(User => {
+            database.ref('users/' + User.uid).child("load-data").set({
+                currentFile: currentFile
+            });
+        });
+        location.href = "pages/edit.html"
+    });
+  
+    $('.modal').modal();
+});
