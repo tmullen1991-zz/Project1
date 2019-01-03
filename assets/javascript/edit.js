@@ -15,16 +15,21 @@ $(document).ready(function () {
 
     auth.onAuthStateChanged(User => {
         if (User) {
-            database.ref('users/' + User.uid).on("child_added", function (childSnapshot) {
-                console.log(childSnapshot.val())
-                // load any existing note data into the text area
-                var currentFile = childSnapshot.val().currentFile;
-                console.log(currentFile)
-                //noteContent !== null ? $(".note-content").append(noteContent) : false;
-                // appends the notes name to the header, change 'name goes here' to name variable from database 
-                $("#note-name").prepend("<a href='#' class='brand-logo ml-5 center nav nav-text'>" + 'name goes here' + "</a>");
-            }, function (errorObject) {
-                console.log("Errors handled: " + errorObject.code);
+            var loadFile = database.ref('users/' + User.uid + "/load-data/currentFile")
+            loadFile.once('value', function (snapshot) {
+                var currentFile = snapshot.val();
+                $("#note-name").prepend("<a href='#' class='brand-logo ml-5 center nav nav-text'>" + currentFile + "</a>")
+                database.ref('users/' + User.uid + "/" + currentFile).on("child_added", function (childSnapshot) {
+                    if(childSnapshot.val() !== ""){
+                    $(".note-content").append(childSnapshot.val());
+                    
+                    } else {
+                        $("#text-label").append("Add Stuff to Remember Here :)")
+                    }
+                    console.log(childSnapshot.val())
+                }, function (errorObject) {
+                    console.log("Errors handled: " + errorObject.code);
+                });
             });
         } else {
             location.href = "login.html";
@@ -53,6 +58,8 @@ $(document).ready(function () {
     // needed to allow for materialize input for mobile(see materialize/text-inputs on website)
     // add this line everytime after jQuery change the textarea's $('#textarea1').val()
     M.textareaAutoResize($('#textarea1'));
+    $(".dropdown-trigger").dropdown();
+    $('.modal').modal();
     // sign out if logged in, auth.onAuthStateChanged above will automatically redirect to login
     $(document).on("click", "#logout", function () {
         firebase.auth().signOut();

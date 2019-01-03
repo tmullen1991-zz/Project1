@@ -15,7 +15,7 @@ $(document).ready(function () {
     auth.onAuthStateChanged(User => {
         if (User) {
         } else {
-            location.href ="pages/login.html"
+            location.href = "pages/login.html"
         };
     });
     // sign out if logged in, auth.onAuthStateChanged above will automatically redirect to login
@@ -24,22 +24,23 @@ $(document).ready(function () {
     });
     $('.modal').modal();
     // add note name to database from modal
-    $(document).on("click", "#add", function(){
+    $(document).on("click", "#add", function () {
         var fileName = $("input").val().trim()
         auth.onAuthStateChanged(User => {
             database.ref('users/' + User.uid).child(fileName).set({
-                noteName : fileName
+                // set initial note content to a blank string in firebase
+                noteContent: ""
             });
         });
     });
     // store the file clicked on into a reference object in firebase, this allows the edit.html page to know what file data to load
-    $(document).on("click", ".file-name", function(){
+    $(document).on("click", ".file-name", function () {
         var currentFile = $(this).text();
         auth.onAuthStateChanged(User => {
             database.ref('users/' + User.uid).child("load-data").set({
-                currentFile : currentFile
+                currentFile: currentFile
             });
         });
-        location.href ="pages/edit.html"
+        location.href = "pages/edit.html"
     });
 });

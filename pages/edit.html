@@ -16,20 +16,31 @@
 </head>
 
 <body>
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a class="blue-text" id="logout">logout</a></li>
+    </ul>
     <nav>
         <div id="note-name" class="nav-wrapper menu blue">
-            <a href="../index.html"><i class="back-arrow large material-icons ml-5">arrow_back</i></a>
+            <a href="../index.html"><i class="back-arrow large left material-icons ml-5">arrow_back</i></a>
+            <ul class="right show-on-med-and-down">
+                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="material-icons">arrow_drop_down</i></a></li>
+            </ul>
         </div>
     </nav>
     <div class="row note">
         <form class="col s12 plus">
             <div class="input-field col s12">
                 <textarea id="textarea1" class="materialize-textarea note-content"></textarea>
-                <label for="textarea1">Add Stuff to Remeber Here</label>
-                <a id="save" class="save-button waves-effect waves-light blue right btn"><i class="material-icons right">save</i>save</a>
+                <label id="text-label" for='textarea1'></label>
+                <div class="row">
+                    <a id="save" class="save-button waves-effect waves-light blue right btn"><i class="material-icons right">save</i>save</a>
+                </div>
+                <div class="row">
+
+                </div>
             </div>
         </form>
-        <a class="btn blue right" id="logout">logout</a>
+
     </div>
     <script src="../assets/javascript/edit.js"></script>
 </body>
