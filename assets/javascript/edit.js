@@ -41,20 +41,33 @@ $(document).ready(function () {
         // store note content in variable
         var noteContent = $(".note-content").val().trim();
         //add AYLIEN stuff here using noteContent as the text, then add whatever is needed to pull the first label from the JSON object and store in hashTag variable
-        
-        auth.onAuthStateChanged(User => {
-            database.ref('users/' + User.uid).on("child_added", function (childSnapshot) {
-                // save the child/path name to be saved under (the note name) into a variable 
-                var currentFile = childSnapshot.val().currentFile;
-                if (currentFile !== undefined) {
-                    // store the text into an object under the currentFile name in firebase
-                    database.ref('users/' + User.uid + "/note-list").child(currentFile).set({
-                        noteContent: noteContent, 
-                        //hashTag: hashTag
-                    });
-                };
-            }, function (errorObject) {
-                console.log("Errors handled: " + errorObject.code);
+        $.get({
+            url: "https://api.aylien.com/api/v1/hashtags",
+            data: { text: noteContent },
+            headers: {"X-AYLIEN-TextAPI-Application-Key": "a387bd2abf7a07b262720ee16227277c", 
+                "X-AYLIEN-TextAPI-Application-ID": "f32dfe9d"}
+        }).done( function (response) {
+
+            var hashtag = "";
+            if(response.hashtags[0] !== undefined)
+            {
+                hashtag = response.hashtags[0];
+            }
+
+            auth.onAuthStateChanged(User => {
+                database.ref('users/' + User.uid).on("child_added", function (childSnapshot) {
+                    // save the child/path name to be saved under (the note name) into a variable 
+                    var currentFile = childSnapshot.val().currentFile;
+                    if (currentFile !== undefined) {
+                        // store the text into an object under the currentFile name in firebase
+                        database.ref('users/' + User.uid + "/note-list").child(currentFile).set({
+                            noteContent: noteContent, 
+                            hashTag: hashTag
+                        });
+                    };
+                }, function (errorObject) {
+                    console.log("Errors handled: " + errorObject.code);
+                });
             });
         });
     });
