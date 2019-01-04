@@ -71,6 +71,11 @@ body {
 .dropdown-trigger{
     margin-top: 8.5px;
 }
+
+.g-savetodrive {
+    float: left;
+}
+
 @media only screen and (max-width: 875px) {
     .note-item {
         margin-right: 0 !important;

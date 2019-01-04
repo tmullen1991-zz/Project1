@@ -36,13 +36,23 @@
                     <a id="save" class="save-button waves-effect waves-light blue right btn"><i class="material-icons right">save</i>save</a>
                 </div>
                 <div class="row">
-
+                    <script src="https://apis.google.com/js/platform.js" async defer></script>
+                    <div class="g-savetodrive" data-src="//example.com/path/to/myfile.pdf" data-filename="file"
+                        data-sitename="Fruition">
+                    </div>
                 </div>
-            </div>
-        </form>
 
-    </div>
+            </div> 
+            </form>
+            </div>
+
     <script src="../assets/javascript/edit.js"></script>
+    <script src="../assets/javascript/drive.js"
+        async defer src = "https://apis.google.com/js/api.js"
+        onload = "this.onload=function(){};handleClientLoad()"
+        onreadystatechange = "if (this.readyState === 'complete') this.onload()"></script>
+        
+
 </body>
 
 </html>
