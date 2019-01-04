@@ -15,18 +15,19 @@ $(document).ready(function () {
 
     auth.onAuthStateChanged(User => {
         if (User) {
+            // load the file cliked on from index.html from firebase
             var loadFile = database.ref('users/' + User.uid + "/load-data/currentFile")
             loadFile.once('value', function (snapshot) {
                 var currentFile = snapshot.val();
+                // add note name to page title
                 $("#note-name").prepend("<a href='#' class='brand-logo ml-5 center nav nav-text'>" + currentFile + "</a>")
-                database.ref('users/' + User.uid + "/" + currentFile).on("child_added", function (childSnapshot) {
-                    if(childSnapshot.val() !== ""){
-                    $(".note-content").append(childSnapshot.val());
-                    
+                database.ref('users/' + User.uid + "/note-list/" + currentFile).on("child_added", function (childSnapshot) {
+                    // add note text to input area, otherwise add label to prompt user to enter info
+                    if (childSnapshot.val() !== "") {
+                        $(".note-content").text(childSnapshot.val());
                     } else {
                         $("#text-label").append("Add Stuff to Remember Here :)")
                     }
-                    console.log(childSnapshot.val())
                 }, function (errorObject) {
                     console.log("Errors handled: " + errorObject.code);
                 });
@@ -37,7 +38,7 @@ $(document).ready(function () {
     });
 
     $(document).on("click", "#save", function () {
-        // push data to firebase
+        // store note content in variable
         var noteContent = $(".note-content").val().trim();
         auth.onAuthStateChanged(User => {
             database.ref('users/' + User.uid).on("child_added", function (childSnapshot) {
@@ -45,7 +46,7 @@ $(document).ready(function () {
                 var currentFile = childSnapshot.val().currentFile;
                 if (currentFile !== undefined) {
                     // store the text into an object under the currentFile name in firebase
-                    database.ref('users/' + User.uid).child(currentFile).set({
+                    database.ref('users/' + User.uid + "/note-list").child(currentFile).set({
                         noteContent: noteContent
                     });
                 };
@@ -55,8 +56,6 @@ $(document).ready(function () {
         });
     });
 
-    // needed to allow for materialize input for mobile(see materialize/text-inputs on website)
-    // add this line everytime after jQuery change the textarea's $('#textarea1').val()
     M.textareaAutoResize($('#textarea1'));
     $(".dropdown-trigger").dropdown();
     $('.modal').modal();
