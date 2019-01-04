@@ -16,9 +16,16 @@ $(document).ready(function () {
         if (User) {
             database.ref('users/' + User.uid + "/note-list").on("child_added", function (childSnapshot) {
 
+                if (childSnapshot.val().hashTags !== undefined) {
+                    var hashTags = childSnapshot.val().hashTags;
+                } else {
+                    hashTags = "";
+                }
+
                 var listItem = $('<div class="row note-item">' +
                     '<div class="col s2 l1 material-icons note-icon">insert_drive_file</div>' +
                     '<div class="col s7 m7 l7 file-name">' + childSnapshot.key + '</div>' +
+                    '<div class="col s3 l3 right"><div class="note-hashtag">' + hashTags + '</div>' +
                     '</div>');
 
                 if ($("#noteList").text() === "") {
@@ -26,7 +33,7 @@ $(document).ready(function () {
                 }
 
                 $('#noteList').prepend(listItem);
-                
+
             })
         } else {
             location.href = "pages/login.html"
