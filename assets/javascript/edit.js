@@ -40,13 +40,6 @@ $(document).ready(function () {
     $(document).on("click", "#save", function () {
         // store note content in variable
         var noteContent = $(".note-content").val().trim();
-        var hashTagArr = $(".note-content").html().match(/(^#|[^&]#)([a-z0-9]+)/gi);
-        var hashTagArr2 = [];
-        if (hashTagArr !== null) {
-            hashTagArr.forEach(function (hashTag) {
-                hashTagArr2.push(hashTag.slice(hashTag.indexOf("#"), hashTag.length));
-            });
-        };
         auth.onAuthStateChanged(User => {
             database.ref('users/' + User.uid).on("child_added", function (childSnapshot) {
                 // save the child/path name to be saved under (the note name) into a variable 
@@ -54,8 +47,7 @@ $(document).ready(function () {
                 if (currentFile !== undefined) {
                     // store the text into an object under the currentFile name in firebase
                     database.ref('users/' + User.uid + "/note-list").child(currentFile).set({
-                        noteContent: noteContent,
-                        hashTags: hashTagArr2
+                        noteContent: noteContent
                     });
                 };
             }, function (errorObject) {
