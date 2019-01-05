@@ -42,8 +42,8 @@ $(document).ready(function () {
                     console.log("not logged in")
                 };
             });
-    } else {
-            alert("passwords dont match")
+        } else {
+            console.log("passwords do not match")
         }
         promise.catch(e => console.log(e.message));
     });
@@ -57,4 +57,5 @@ $(document).ready(function () {
             console.log("not logged in");
         };
     });
+    $('.modal').modal();
 });

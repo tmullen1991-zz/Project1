@@ -41,8 +41,16 @@
                     <label for="password">Retype Password</label>
                 </div>
             </div>
-            <a class="waves-effect waves-light btn green" id="create">Create</a>
+            <a class="waves-effect waves-light btn green modal-trigger" id="create" href="#modal2">Create</a>
         </form>
+        <div id="modal2" class="modal">
+                <div class="modal-content">
+                    <h5>Passwords do not match</h5>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">OK</a>
+                </div>
+            </div>
     </div>
     <script src="../assets/javascript/login.js"></script>
 </body>
