@@ -85,7 +85,7 @@ $(document).ready(function () {
         $.getJSON('https://www.dictionaryapi.com/api/v3/references/collegiate/json/' + word + '?key=ecddfe40-0ee7-4b86-9e13-49ff7a01320a', function (data) {
 
             var definitonArr = data[0].shortdef;
-            $(".define-result").html("<h6>" + word + " definiton from Merriam-Webster: </h6>")
+            $(".define-result").html("<h6>Definiton for '" + word + "' from Merriam-Webster: </h6>")
             
             if (definitonArr === undefined) {
                 $(".define-result").append("Definiton not found :(")
@@ -120,7 +120,7 @@ $(document).ready(function () {
             },
             success: function (data){
                 var synonymArr = data.results[0].lexicalEntries[0].entries[0].senses[0].synonyms;
-                $(".synonym-result").html("<h6>" + word + " synonyms from Merriam-Webster: </h6>")
+                $(".synonym-result").html("<h6>Synonyms for '" + word + "' from Oxford: </h6>")
                 if (synonymArr === undefined) {
                     $(".synonym-result").append("Definiton not found :(")
                 } else {
