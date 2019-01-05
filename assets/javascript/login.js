@@ -20,6 +20,7 @@ $(document).ready(function () {
         const password = $("#password-login").val().trim();
         const promise = auth.signInWithEmailAndPassword(email, password).catch(function (error) {
             console.log("error with sign in:" + error);
+            $('#modal').modal('open');
         });
         promise.catch(e => console.log(e.message));
     });
@@ -34,6 +35,7 @@ $(document).ready(function () {
 
             const promise = auth.createUserWithEmailAndPassword(email, password).catch(function (error) {
                 console.log("error with creation:" + error);
+                $('#modal').modal('open');
             });
 
             auth.onAuthStateChanged(User => {
@@ -47,11 +49,13 @@ $(document).ready(function () {
                     });
                 } else {
                     console.log("not logged in")
+                    $('#modal').modal('open');
                 };
             });
 
         } else {
             console.log("passwords do not match")
+            $('#modal').modal('open');
         }
         promise.catch(e => console.log(e.message));
     });
@@ -67,6 +71,6 @@ $(document).ready(function () {
             console.log("not logged in");
         };
     });
+    $('#modal').modal()
     
-    $('.modal').modal();
 });
