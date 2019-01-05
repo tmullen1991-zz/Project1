@@ -96,6 +96,44 @@ $(document).ready(function () {
         });
     })
 
+    $(document).on("click", "#getSynonyms", function () {
+        $(".synonym-result").empty()
+
+        // selectionstart will not work with jquery $("textarea1").val(), use document.getElementById
+        var noteContent = document.getElementById("textarea1");
+        var start = noteContent.selectionStart;
+        var end = noteContent.selectionEnd;
+        var word = noteContent.value.substring(start, end);
+
+        // get synonyms from Oxford
+        $.ajax({
+            url: 'http://CrossOriginGateway.test/cors-pass-through',
+            type: 'POST',
+            data: { 
+                url: "https://od-api.oxforddictionaries.com/api/v1/entries/en/" + word + "/synonyms", 
+                headers: {	
+                    "app_id": "404cd1ec",
+                    "app_key": "5e565b1dad5419817023545079ef25bb"
+                }
+            },
+            success: function (data){
+                var synonymArr = data.results[0].lexicalEntries[0].entries[0].senses[0].synonyms;
+                $(".synonym-result").html("<h6>" + word + " synonyms from Merriam-Webster: </h6>")
+                if (synonymArr === undefined) {
+                    $(".synonym-result").append("Definiton not found :(")
+                } else {
+                    for (i = 0; i < synonymArr.length; i++) {
+                        $(".synonym-result").append((i + 1) + ". " + synonymArr[i].text + "<br>")
+                    }
+                }
+            },
+            error: function (data){
+        
+            }
+        
+        });
+    })
+
     // materialize script
     M.textareaAutoResize($('#textarea1'));
     $(".dropdown-trigger").dropdown();
