@@ -17,7 +17,7 @@ $(document).ready(function () {
         const password = $("#password-login").val().trim();
         const promise = auth.signInWithEmailAndPassword(email, password).catch(function (error) {
             console.log("error with sign in:" + error);
-            alert(error);
+            $("#error").html(error);
         });
         promise.catch(e => console.log(e.message));
     });
@@ -28,7 +28,7 @@ $(document).ready(function () {
         if (password === repassword) {
             const promise = auth.createUserWithEmailAndPassword(email, password).catch(function (error) {
                 console.log("error with creation:" + error);
-                alert(error);
+                $("#error").html(error);
             });
             auth.onAuthStateChanged(User => {
                 if (User) {
