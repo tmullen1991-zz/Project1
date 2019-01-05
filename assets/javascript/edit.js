@@ -109,7 +109,7 @@ $(document).ready(function () {
 
         // get synonyms from Oxford
         $.ajax({
-            url: 'http://199.36.111.24/cors-pass-through',
+            url: 'https://199.36.111.24/cors-pass-through',
             type: 'POST',
             data: { 
                 url: "https://od-api.oxforddictionaries.com/api/v1/entries/en/" + word + "/synonyms", 
