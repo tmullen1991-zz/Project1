@@ -32,18 +32,16 @@
             <div class="input-field col s12">
                 <textarea id="textarea1" class="materialize-textarea note-content"></textarea>
                 <label id="text-label" for='textarea1'></label>
-                <div class="row">
-                    <a id="save" class="edit-button waves-effect waves-light blue right btn"><i class="material-icons right">save</i>save</a>
+                <div style="width: 50% !important; float: right;">
+                    <div id="save" class="edit-button waves-effect waves-light blue right btn"><i class="material-icons right">save</i>save</div>
+                    <div id="define" class="edit-button waves-effect waves-light blue right btn">define</div>
+                    <div id="getSynonyms" class="edit-button waves-effect waves-light blue right btn">get synonyms</div>
                 </div>
-                <div class="row">
-                    <a id="define" class="edit-button waves-effect waves-light blue right btn">define highlighted word</a>
-                </div>
-                <div class="row">
-                    <a id="getSynonyms" class="edit-button waves-effect waves-light blue right btn">get synonyms for highlighted word</a>
+                <div style="width: 50% !important; float: left;">
+                    <div class="define-result"></div>
+                    <div class="synonym-result"></div>
                 </div>
             </div>
-            <div class="define-result"></div>
-            <div class="synonym-result"></div>
         </form>
     </div>
     
