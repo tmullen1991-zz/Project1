@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>login</title>
+    <title>Create</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
@@ -18,6 +18,7 @@
 <body>
     <nav>
         <div class="nav-wrapper menu green">
+                <a href="login.html"><i class="back-arrow large left material-icons ml-5">arrow_back</i></a>
             <a href="#" class="brand-logo ml-5 center nav nav-text">Fruition</a>
         </div>
     </nav>
@@ -25,20 +26,32 @@
         <form class="col s12 plus">
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="email-login" type="email" class="validate">
+                    <input id="email-create" type="email" class="validate">
                     <label for="email">Email</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="password-login" type="password" class="validate">
+                    <input id="password-create" type="password" class="validate">
                     <label for="password">Password</label>
                 </div>
             </div>
-            <a class="waves-effect waves-light btn green" id="login">Login</a>
-            or
-            <a class="waves-effect waves-light btn green" id="create-account">Create Account</a>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="repassword-create" type="password" class="validate">
+                    <label for="password">Retype Password</label>
+                </div>
+            </div>
+            <a class="waves-effect waves-light btn green modal-trigger" id="create" href="#modal2">Create</a>
         </form>
+        <div id="modal2" class="modal">
+                <div class="modal-content">
+                    <h5>Passwords do not match</h5>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">OK</a>
+                </div>
+            </div>
     </div>
     <script src="../assets/javascript/login.js"></script>
 </body>

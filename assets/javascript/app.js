@@ -58,4 +58,8 @@ $(document).ready(function () {
         location.href = "pages/edit.html"
     });
     $('.modal').modal();
+    $(".dropdown-trigger").dropdown();
+    $(document).on("click", "#logout", function () {
+        firebase.auth().signOut();
+    });
 });
