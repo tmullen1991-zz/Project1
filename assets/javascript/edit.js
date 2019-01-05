@@ -73,6 +73,7 @@ $(document).ready(function () {
     // click event for taking highlighted word and passing it to APIs
     $(document).on("click", "#define", function () {
         $(".define-result").empty()
+        $(".synonym-result").empty()
 
         // selectionstart will not work with jquery $("textarea1").val(), use document.getElementById
         var noteContent = document.getElementById("textarea1");
@@ -98,6 +99,7 @@ $(document).ready(function () {
 
     $(document).on("click", "#getSynonyms", function () {
         $(".synonym-result").empty()
+        $(".define-result").empty()
 
         // selectionstart will not work with jquery $("textarea1").val(), use document.getElementById
         var noteContent = document.getElementById("textarea1");
