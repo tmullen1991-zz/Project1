@@ -73,19 +73,20 @@ $(document).ready(function () {
     // click event for taking highlighted word and passing it to APIs
     $(document).on("click", "#define", function () {
         $(".define-result").empty()
+
         // selectionstart will not work with jquery $("textarea1").val(), use document.getElementById
         var noteContent = document.getElementById("textarea1");
         var start = noteContent.selectionStart;
         var end = noteContent.selectionEnd;
         var word = noteContent.value.substring(start, end);
+
         // get defintion from Merriam-Webster 
         $.getJSON('https://www.dictionaryapi.com/api/v3/references/collegiate/json/' + word + '?key=ecddfe40-0ee7-4b86-9e13-49ff7a01320a', function (data) {
             var definitonArr = data[0].shortdef;
             $(".define-result").html("<h6>" + word + " definiton from Merriam-Webster: </h6>")
-            for(i=0;i<definitonArr.length;i++){
-                $(".define-result").append((i+1)+". "+definitonArr[i]+"<br>")
+            for (i = 0; i < definitonArr.length; i++) {
+                $(".define-result").append((i + 1) + ". " + definitonArr[i] + "<br>")
             }
-            
         });
     })
 
@@ -93,6 +94,7 @@ $(document).ready(function () {
     M.textareaAutoResize($('#textarea1'));
     $(".dropdown-trigger").dropdown();
     $('.modal').modal();
+    
     // sign out if logged in, auth.onAuthStateChanged above will automatically redirect to login
     $(document).on("click", "#logout", function () {
         firebase.auth().signOut();
