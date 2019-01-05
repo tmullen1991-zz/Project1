@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../assets/css/index.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 
 <body>
@@ -37,7 +38,7 @@
                 </div>
                 <div class="row">
                     <script src="https://apis.google.com/js/platform.js" async defer></script>
-                    <div class="g-savetodrive" data-src="//example.com/path/to/myfile.pdf" data-filename="file"
+                    <div id="driveButton" class="g-savetodrive" data-src="" data-filename=""
                         data-sitename="Fruition">
                     </div>
                 </div>
@@ -47,10 +48,11 @@
             </div>
 
     <script src="../assets/javascript/edit.js"></script>
-    <script src="../assets/javascript/drive.js"
-        async defer src = "https://apis.google.com/js/api.js"
+    <script src="../assets/javascript/drive.js"></script>
+
+    <!-- async defer src = "https://apis.google.com/js/api.js"
         onload = "this.onload=function(){};handleClientLoad()"
-        onreadystatechange = "if (this.readyState === 'complete') this.onload()"></script>
+        onreadystatechange = "if (this.readyState === 'complete') this.onload()" -->
         
 
 </body>

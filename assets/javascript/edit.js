@@ -1,3 +1,6 @@
+var currentFile;
+var currentFileContent;
+
 $(document).ready(function () {
     // Initialize Firebase
     var config = {
@@ -18,13 +21,14 @@ $(document).ready(function () {
             // load the file cliked on from index.html from firebase
             var loadFile = database.ref('users/' + User.uid + "/load-data/currentFile")
             loadFile.once('value', function (snapshot) {
-                var currentFile = snapshot.val();
+                currentFile = snapshot.val();
                 // add note name to page title
                 $("#note-name").prepend("<a href='#' class='brand-logo ml-5 center nav nav-text'>" + currentFile + "</a>")
                 database.ref('users/' + User.uid + "/note-list/" + currentFile).on("child_added", function (childSnapshot) {
                     // add note text to input area, otherwise add label to prompt user to enter info
                     if (childSnapshot.val() !== "") {
-                        $(".note-content").text(childSnapshot.val());
+                        currentFileContent = childSnapshot.val();
+                        $(".note-content").text(currentFileContent);
                     } else {
                         $("#text-label").append("Add Stuff to Remember Here :)")
                     }
@@ -39,7 +43,7 @@ $(document).ready(function () {
 
     $(document).on("click", "#save", function () {
         // store note content in variable
-        var noteContent = $(".note-content").val().trim();
+        currentFileContent = $(".note-content").val().trim();
         auth.onAuthStateChanged(User => {
             database.ref('users/' + User.uid).on("child_added", function (childSnapshot) {
                 // save the child/path name to be saved under (the note name) into a variable 
@@ -47,8 +51,9 @@ $(document).ready(function () {
                 if (currentFile !== undefined) {
                     // store the text into an object under the currentFile name in firebase
                     database.ref('users/' + User.uid + "/note-list").child(currentFile).set({
-                        noteContent: noteContent
+                        noteContent: currentFileContent
                     });
+                    addSaveToDrive();
                 };
             }, function (errorObject) {
                 console.log("Errors handled: " + errorObject.code);
@@ -64,3 +69,14 @@ $(document).ready(function () {
         firebase.auth().signOut();
     });
 });
+
+function addSaveToDrive() {
+    var blob = new Blob([currentFileContent], { type: "text/plain" })
+    var url = window.URL.createObjectURL(blob);
+    const srcAttributeName = "data-src";
+    const fileAttributeName = "data-filename"
+    $("#driveButton").attr(srcAttributeName, url);
+    $("#driveButton").attr(fileAttributeName, currentFile);
+    console.log(srcAttributeName + ": " + $("#driveButton").attr(srcAttributeName));
+    // $.getScript("https://apis.google.com/js/platform.js");
+}
