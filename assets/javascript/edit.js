@@ -38,10 +38,9 @@ $(document).ready(function () {
     });
 
     $(document).on("click", "#save", function () {
+        
         // store note content in variable
         var noteContent = $(".note-content").val().trim();
-        //add AYLIEN stuff here using noteContent as the text, then add whatever is needed to pull the first label from the JSON object and store in hashTag variable
-
         auth.onAuthStateChanged(User => {
             database.ref('users/' + User.uid).on("child_added", function (childSnapshot) {
                 // save the child/path name to be saved under (the note name) into a variable 
@@ -49,15 +48,14 @@ $(document).ready(function () {
                 if (currentFile !== undefined) {
                     // store the text into an object under the currentFile name in firebase
                     database.ref('users/' + User.uid + "/note-list").child(currentFile).set({
-                        noteContent: noteContent, 
-                        hashTag: hashTag
+                        noteContent: noteContent
                     });
                 };
             }, function (errorObject) {
                 console.log("Errors handled: " + errorObject.code);
             });
         });
-        
+
     });
 
     M.textareaAutoResize($('#textarea1'));
