@@ -8,29 +8,36 @@ $(document).ready(function () {
         storageBucket: "project1-f7c4f.appspot.com",
         messagingSenderId: "385049691199"
     };
+
     firebase.initializeApp(config);
     var database = firebase.database();
     const auth = firebase.auth();
+
     // user name login
     $(document).on("click", "#login", function () {
+
         const email = $("#email-login").val().trim();
         const password = $("#password-login").val().trim();
         const promise = auth.signInWithEmailAndPassword(email, password).catch(function (error) {
             console.log("error with sign in:" + error);
-            $("#error").html(error);
         });
         promise.catch(e => console.log(e.message));
     });
+
     $(document).on("click", "#create", function () {
+
         const email = $("#email-create").val().trim();
         const password = $("#password-create").val().trim();
         const repassword = $("#repassword-create").val().trim();
+
         if (password === repassword) {
+
             const promise = auth.createUserWithEmailAndPassword(email, password).catch(function (error) {
                 console.log("error with creation:" + error);
-                $("#error").html(error);
             });
+
             auth.onAuthStateChanged(User => {
+
                 if (User) {
                     var userEmail = User.email
                     var uid = User.uid
@@ -42,14 +49,17 @@ $(document).ready(function () {
                     console.log("not logged in")
                 };
             });
+
         } else {
             console.log("passwords do not match")
         }
         promise.catch(e => console.log(e.message));
     });
+
     $(document).on("click", "#create-account", function () {
         location.href = "create.html"
     });
+
     auth.onAuthStateChanged(User => {
         if (User) {
             location.href = "../index.html";
@@ -57,5 +67,6 @@ $(document).ready(function () {
             console.log("not logged in");
         };
     });
+    
     $('.modal').modal();
 });
