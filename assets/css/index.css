@@ -54,7 +54,7 @@ body {
 }
 
 /* edit.html styling*/
-.save-button{
+.edit-button{
     margin-top: 15px!important;
     margin-right: 10px!important;
 }
@@ -70,6 +70,38 @@ body {
 }
 .dropdown-trigger{
     margin-top: 8.5px;
+}
+textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #2196f3;
+    -webkit-box-shadow: 0 1px 0 0 #2196f3;
+    box-shadow: 0 1px 0 0 #2196f3;
+}
+textarea:focus:not([readonly])+label{
+    color: #2196f3 !important;
+}
+input:not([type]):focus:not([readonly]), input[type="text"]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 1px solid #f44336;
+    -webkit-box-shadow: 0 1px 0 0 #f44336;
+    box-shadow: 0 1px 0 0 #f44336;
+}
+input[type="text"]:not(.browser-default):focus:not([readonly])+label{
+    color: #f44336;
+}
+input-fiel, .prefix.active{
+    color: #f44336 !important;
+}
+input[type="password"]:not(.browser-default):focus:not([readonly])+label, input[type="email"]:not(.browser-default):focus:not([readonly])+label  {
+    color: #2196f3 !important;
+}
+input[type="password"]:not(.browser-default):focus:not([readonly]), input[type="email"]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 1px solid #2196f3;
+    -webkit-box-shadow: 0 1px 0 0 #2196f3;
+    box-shadow: 0 1px 0 0 #2196f3;
+}
+input.valid[type="text"]:not(.browser-default), input.valid[type="password"]:not(.browser-default), input.valid[type="email"]:not(.browser-default){
+    border-bottom: 1px solid #9e9e9e;
+    -webkit-box-shadow: 0 1px 0 0 #9e9e9e;
+    box-shadow: 0 1px 0 0 #9e9e9e;
 }
 @media only screen and (max-width: 875px) {
     .note-item {

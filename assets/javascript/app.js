@@ -25,7 +25,6 @@ $(document).ready(function () {
                 var listItem = $('<div class="row note-item">' +
                     '<div class="col s2 l1 material-icons note-icon">insert_drive_file</div>' +
                     '<div class="col s7 m7 l7 file-name">' + childSnapshot.key + '</div>' +
-                    '<div class="col s3 l3 right"><div class="note-hashtag">' + hashTag + '</div>' +
                     '</div>');
 
                 if ($("#noteList").text() === "") {
