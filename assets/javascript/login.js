@@ -13,8 +13,8 @@ $(document).ready(function () {
     const auth = firebase.auth();
     // user name login
     $(document).on("click", "#login", function () {
-        const email = $("#email").val().trim();
-        const password = $("#password").val().trim();
+        const email = $("#email-login").val().trim();
+        const password = $("#password-login").val().trim();
         const promise = auth.signInWithEmailAndPassword(email, password).catch(function (error) {
             console.log("error with sign in:" + error);
             alert(error);
@@ -22,13 +22,33 @@ $(document).ready(function () {
         promise.catch(e => console.log(e.message));
     });
     $(document).on("click", "#create", function () {
-        const email = $("#email").val().trim();
-        const password = $("#password").val().trim();
-        const promise = auth.createUserWithEmailAndPassword(email, password).catch(function (error) {
-            console.log("error with creation:" + error);
-            alert(error);
-        });
+        const email = $("#email-create").val().trim();
+        const password = $("#password-create").val().trim();
+        const repassword = $("#repassword-create").val().trim();
+        if (password === repassword) {
+            const promise = auth.createUserWithEmailAndPassword(email, password).catch(function (error) {
+                console.log("error with creation:" + error);
+                alert(error);
+            });
+            auth.onAuthStateChanged(User => {
+                if (User) {
+                    var userEmail = User.email
+                    var uid = User.uid
+                    database.ref('users/' + uid).set({
+                        userEmail: userEmail,
+                        uid: uid,
+                    });
+                } else {
+                    console.log("not logged in")
+                };
+            });
+    } else {
+            alert("passwords dont match")
+        }
         promise.catch(e => console.log(e.message));
+    });
+    $(document).on("click", "#create-account", function () {
+        location.href = "create.html"
     });
     auth.onAuthStateChanged(User => {
         if (User) {

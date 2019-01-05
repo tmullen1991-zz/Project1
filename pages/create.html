@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>login</title>
+    <title>Create</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
@@ -25,19 +25,23 @@
         <form class="col s12 plus">
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="email-login" type="email" class="validate">
+                    <input id="email-create" type="email" class="validate">
                     <label for="email">Email</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="password-login" type="password" class="validate">
+                    <input id="password-create" type="password" class="validate">
                     <label for="password">Password</label>
                 </div>
             </div>
-            <a class="waves-effect waves-light btn blue" id="login">Login</a>
-            or
-            <a class="waves-effect waves-light btn blue" id="create-account">Create Account</a>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="repassword-create" type="password" class="validate">
+                    <label for="password">Retype Password</label>
+                </div>
+            </div>
+            <a class="waves-effect waves-light btn blue" id="create">Create</a>
         </form>
     </div>
     <script src="../assets/javascript/login.js"></script>
