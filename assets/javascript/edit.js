@@ -82,10 +82,16 @@ $(document).ready(function () {
 
         // get defintion from Merriam-Webster 
         $.getJSON('https://www.dictionaryapi.com/api/v3/references/collegiate/json/' + word + '?key=ecddfe40-0ee7-4b86-9e13-49ff7a01320a', function (data) {
+
             var definitonArr = data[0].shortdef;
             $(".define-result").html("<h6>" + word + " definiton from Merriam-Webster: </h6>")
-            for (i = 0; i < definitonArr.length; i++) {
-                $(".define-result").append((i + 1) + ". " + definitonArr[i] + "<br>")
+            
+            if (definitonArr === undefined) {
+                $(".define-result").append("Definiton not found :(")
+            } else {
+                for (i = 0; i < definitonArr.length; i++) {
+                    $(".define-result").append((i + 1) + ". " + definitonArr[i] + "<br>")
+                }
             }
         });
     })
@@ -94,7 +100,7 @@ $(document).ready(function () {
     M.textareaAutoResize($('#textarea1'));
     $(".dropdown-trigger").dropdown();
     $('.modal').modal();
-    
+
     // sign out if logged in, auth.onAuthStateChanged above will automatically redirect to login
     $(document).on("click", "#logout", function () {
         firebase.auth().signOut();
